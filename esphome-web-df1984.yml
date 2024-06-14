@@ -1,0 +1,413 @@
+esphome:
+ name: esphome-web-df1984
+ friendly_name: ESP32
+ includes:
+   - efento/efento.h
+
+esp32:
+ board: esp32dev
+ framework:
+   type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+ encryption:
+   key: !secret api_encryption_key
+
+ota:
+
+wifi:
+ ssid: !secret wifi_ssid
+ password: !secret wifi_password
+
+ # Enable fallback hotspot (captive portal) in case wifi connection fails
+ ap:
+   ssid: "Esphome-Web-Df1984"
+   password: !secret fallback_password
+
+captive_portal:
+
+# -------------------------------------------------------------------------- #
+
+text_sensor:
+ - platform: template
+   name: "HS5 battery"
+   id: hs5_battery_status
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 battery"
+   id: hc5_battery_status
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HS5 firmware version"
+   id: hs5_firmware_version
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 firmware version"
+   id: hc5_firmware_version
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HS5 power status"
+   id: hs5_power_status
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 power status"
+   id: hc5_power_status
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HS5 encrypted"
+   id: hs5_encryption_status
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 encrypted"
+   id: hc5_encryption_status
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HS5 time synchronized"
+   id: hs5_time_synchronization_status
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 time synchronized"
+   id: hc5_time_synchronization_status
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HS5 time synchronized"
+   id: hs5_runtime_error_modem_logging_status
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 time synchronized"
+   id: hc5_runtime_error_modem_logging_status
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HS5 last measurement"
+   id: hs5_last_measurement_timestamp
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 last measurement"
+   id: hc5_last_measurement_timestamp
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HS5 cellular status"
+   id: hs5_cellular_status
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 cellular status"
+   id: hc5_cellular_status
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HS5 channel 1 type"
+   id: hs5_channel_1_type
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HS5 channel 1 unit"
+   id: hs5_channel_1_unit
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HS5 channel 1 binary"
+   id: hs5_channel_1_binary
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HS5 channel 1 summary"
+   id: hs5_channel_1_summary
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 channel 1 type"
+   id: hc5_channel_1_type
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 channel 1 unit"
+   id: hc5_channel_1_unit
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 channel 1 binary"
+   id: hc5_channel_1_binary
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 channel 1 summary"
+   id: hc5_channel_1_summary
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 channel 2 type"
+   id: hc5_channel_2_type
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 channel 2 unit"
+   id: hc5_channel_2_unit
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 channel 2 binary"
+   id: hc5_channel_2_binary
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 channel 2 summary"
+   id: hc5_channel_2_summary
+   entity_category: "diagnostic"
+
+sensor:
+ - platform: template
+   name: "HS5 signal strength"
+   id: hs5_signal_strength
+   unit_of_measurement: "dBm"
+   device_class: "signal_strength"
+   state_class: "measurement"
+   accuracy_decimals: 0
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 signal strength"
+   id: hc5_signal_strength
+   unit_of_measurement: "dBm"
+   device_class: "signal_strength"
+   state_class: "measurement"
+   accuracy_decimals: 0
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HS5 measurement period base"
+   id: hs5_measurement_period_base
+   entity_category: "diagnostic"
+   accuracy_decimals: 0
+
+ - platform: template
+   name: "HC5 measurement period base"
+   id: hc5_measurement_period_base
+   entity_category: "diagnostic"
+   accuracy_decimals: 0
+
+ - platform: template
+   name: "HS5 measurement period factor"
+   id: hs5_measurement_period_factor
+   entity_category: "diagnostic"
+   accuracy_decimals: 0
+
+ - platform: template
+   name: "HC5 measurement period factor"
+   id: hc5_measurement_period_factor
+   entity_category: "diagnostic"
+   accuracy_decimals: 0
+
+ - platform: template
+   name: "HS5 measurement period"
+   id: hs5_measurement_period
+   entity_category: "diagnostic"
+   accuracy_decimals: 0
+
+ - platform: template
+   name: "HC5 measurement period"
+   id: hc5_measurement_period
+   entity_category: "diagnostic"
+   accuracy_decimals: 0
+
+ - platform: template
+   name: "HS5 calibration date"
+   id: hs5_calibration_date
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 calibration date"
+   id: hc5_calibration_date
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HS5 channel 1 measurement"
+   id: hs5_channel_1_measurement
+   unit_of_measurement: "°C"
+   device_class: "temperature"
+   state_class: "measurement"
+   accuracy_decimals: 1
+
+ - platform: template
+   name: "HS5 channel 1 metadata"
+   id: hs5_channel_1_metadata
+   accuracy_decimals: 0
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HS5 channel 1 minimum measurement value"
+   id: hs5_channel_1_min_value
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HS5 channel 1 maximum measurement value"
+   id: hs5_channel_1_max_value
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HS5 channel 1 resolution"
+   id: hs5_channel_1_resolution
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HS5 channel 1 metadata factor"
+   id: hs5_channel_1_metadata_factor
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 Channel 1 measurement"
+   id: hc5_channel_1_measurement
+   unit_of_measurement: "°C"
+   device_class: "temperature"
+   state_class: "measurement"
+   accuracy_decimals: 1
+
+ - platform: template
+   name: "HC5 Channel 1 metadata"
+   id: hc5_channel_1_metadata
+   accuracy_decimals: 0
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 channel 1 minimum measurement value"
+   id: hc5_channel_1_min_value
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 channel 1 maximum measurement value"
+   id: hc5_channel_1_max_value
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 channel 1 resolution"
+   id: hc5_channel_1_resolution
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 channel 1 metadata factor"
+   id: hc5_channel_1_metadata_factor
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 Channel 2 measurement"
+   id: hc5_channel_2_measurement
+   unit_of_measurement: "%"
+   device_class: "humidity"
+   state_class: "measurement"
+   accuracy_decimals: 0
+
+ - platform: template
+   name: "HC5 Channel 2 metadata"
+   id: hc5_channel_2_metadata
+   accuracy_decimals: 0
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 channel 2 minimum measurement value"
+   id: hc5_channel_2_min_value
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 channel 2 maximum measurement value"
+   id: hc5_channel_2_max_value
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 channel 2 resolution"
+   id: hc5_channel_2_resolution
+   entity_category: "diagnostic"
+
+ - platform: template
+   name: "HC5 channel 2 metadata factor"
+   id: hc5_channel_2_metadata_factor
+   entity_category: "diagnostic"
+
+esp32_ble_tracker:
+ on_ble_advertise:
+   - mac_address:
+       - 28:2C:02:41:9A:D2
+     then:
+       lambda: |-
+         auto data = processAdvertisement(x);
+
+         id(hs5_battery_status).publish_state(getBatteryLevel(data));
+         id(hs5_firmware_version).publish_state(getFirmwareVersion(data));
+         // id(hs5_power_status).publish_state(getExternalPowerSupplyStatus(data));
+         // id(hs5_encryption_status).publish_state(getEncryptionStatus(data));
+         id(hs5_time_synchronization_status).publish_state(getTimeSynchronizationStatus(data));
+         id(hs5_runtime_error_modem_logging_status).publish_state(getRuntimeErrorOrModemLoggingStatus(data));
+         // id(hs5_cellular_status).publish_state(getCellularStatus(data));
+         // id(hs5_last_measurement_timestamp).publish_state(getMeasurementTimestamp(data));
+         // id(hs5_measurement_period_base).publish_state(getMeasurementPeriodBase(data));
+         // id(hs5_measurement_period_factor).publish_state(getMeasurementPeriodFactor(data));
+         id(hs5_measurement_period).publish_state(getMeasurementPeriod(data));
+         // id(hs5_calibration_date).publish_state(getCalibrationDate(data));
+         id(hs5_signal_strength).publish_state(x.get_rssi());
+         id(hs5_channel_1_measurement).publish_state(getMeasurementValue(data, 1));
+         id(hs5_channel_1_metadata).publish_state(getMetadataValue(data, 1));
+         // id(hs5_channel_1_type).publish_state(getType(data, 1));
+         // id(hs5_channel_1_min_value).publish_state(getMin(data, 1));
+         // id(hs5_channel_1_max_value).publish_state(getMax(data, 1));
+         // id(hs5_channel_1_resolution).publish_state(getResolution(data, 1));
+         // id(hs5_channel_1_unit).publish_state(getUnit(data, 1));
+         // id(hs5_channel_1_binary).publish_state(getIsBinary(data, 1));
+         // id(hs5_channel_1_metadata_factor).publish_state(getMetadataFactor(data, 1));
+         // id(hs5_channel_1_summary).publish_state(getSummary(data, 1));
+
+   - mac_address:
+       - 28:2C:02:40:28:3C
+     then:
+       lambda: |-
+         auto data = processAdvertisement(x);
+
+         id(hc5_battery_status).publish_state(getBatteryLevel(data));
+         id(hc5_firmware_version).publish_state(getFirmwareVersion(data));
+         // id(hc5_power_status).publish_state(getExternalPowerSupplyStatus(data));
+         // id(hc5_encryption_status).publish_state(getEncryptionStatus(data));
+         // id(hc5_time_synchronization_status).publish_state(getTimeSynchronizationStatus(data));
+         // id(hc5_runtime_error_modem_logging_status).publish_state(getRuntimeErrorOrModemLoggingStatus(data));
+         id(hc5_cellular_status).publish_state(getCellularStatus(data));
+         // id(hc5_last_measurement_timestamp).publish_state(getMeasurementTimestamp(data));
+         // id(hc5_measurement_period_base).publish_state(getMeasurementPeriodBase(data));
+         // id(hc5_measurement_period_factor).publish_state(getMeasurementPeriodFactor(data));
+         id(hc5_measurement_period).publish_state(getMeasurementPeriod(data));
+         // id(hc5_calibration_date).publish_state(getCalibrationDate(data));
+         id(hc5_signal_strength).publish_state(x.get_rssi());
+         id(hc5_channel_1_measurement).publish_state(getMeasurementValue(data, 1));
+         id(hc5_channel_1_metadata).publish_state(getMetadataValue(data, 1));
+         // id(hc5_channel_1_type).publish_state(getType(data, 1));
+         // id(hc5_channel_1_min_value).publish_state(getMin(data, 1));
+         // id(hc5_channel_1_max_value).publish_state(getMax(data, 1));
+         // id(hc5_channel_1_resolution).publish_state(getResolution(data, 1));
+         // id(hc5_channel_1_unit).publish_state(getUnit(data, 1));
+         // id(hc5_channel_1_binary).publish_state(getIsBinary(data, 1));
+         // id(hc5_channel_1_metadata_factor).publish_state(getMetadataFactor(data, 1));
+         // id(hc5_channel_1_summary).publish_state(getSummary(data, 1));
+         id(hc5_channel_2_measurement).publish_state(getMeasurementValue(data, 2));
+         id(hc5_channel_2_metadata).publish_state(getMetadataValue(data, 2));
+         // id(hc5_channel_2_type).publish_state(getType(data, 2));
+         // id(hc5_channel_2_min_value).publish_state(getMin(data, 2));
+         // id(hc5_channel_2_max_value).publish_state(getMax(data, 2));
+         // id(hc5_channel_2_resolution).publish_state(getResolution(data, 2));
+         // id(hc5_channel_2_unit).publish_state(getUnit(data, 2));
+         // id(hc5_channel_2_binary).publish_state(getIsBinary(data, 2));
+         // id(hc5_channel_2_metadata_factor).publish_state(getMetadataFactor(data, 2));
+         // id(hc5_channel_2_summary).publish_state(getSummary(data, 2));
